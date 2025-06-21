@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario ColDinero - Paso 2</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h2>Información Financiera</h2>
+    <form action="form3.html" oninput="calcularTotal()">
+      <input type="text" placeholder="Ocupación" required>
+      <input type="text" placeholder="Banco Principal" required>
+      <input type="number" id="monto" placeholder="Monto a Solicitar" required>
+      <input type="number" id="cuotas" placeholder="Número de Cuotas" required>
+      <p><strong>Total a Pagar:</strong> $<span id="total">0</span></p>
+      <button type="submit">Siguiente</button>
+    </form>
+  </div>
+
+  <script>
+    function calcularTotal() {
+      const monto = parseFloat(document.getElementById('monto').value) || 0;
+      const cuotas = parseInt(document.getElementById('cuotas').value) || 0;
+      const total = monto * Math.pow(1 + 0.08, cuotas);
+      document.getElementById('total').textContent = total.toFixed(0);
+    }
+  </script>
+</body>
+</html>
